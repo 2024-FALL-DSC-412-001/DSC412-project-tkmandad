@@ -1,56 +1,74 @@
-# DSC412-project
+# Iowa House Price Prediction Using ML Techniques
 
-This repository contains any code and files for the DSC412 project.
+## Proposal
 
-The project proposal and plan are in DSC412_001_FA24_PR_tkmandad.pdf
+### Problem Statement
+Accurately predicting house prices is a vital challenge for real estate professionals and prospective homeowners. The Iowa House Price Prediction project aims to address this challenge by leveraging machine learning techniques to develop a robust predictive model. The project focuses on understanding the relationship between property attributes and sale prices while addressing potential issues like multicollinearity and overfitting in the dataset.
 
-# Iowa House Price Prediction using ML techniques
+### Proposed Solution
+The project employs linear regression and two regularization techniques, Ridge and Lasso regression, to build predictive models. These methods help address multicollinearity and improve generalization. By optimizing hyperparameters such as the regularization strength, the models aim to achieve minimal mean squared error (MSE). 
 
-## Project Overview
-The objective of this project is to develop and evaluate predictive models for estimat- ing house prices in Iowa, using a dataset that encompasses a wide range of property attributes. In order to create an effective predictive model, we employed linear regres- sion and two regularization techniques—Ridge and Lasso regression. By leveraging these methods, we aimed to handle potential multicollinearity among features and improve the model’s predictive accuracy.
+What makes this approach novel is its combination of a comprehensive feature engineering process and the comparison of regularization techniques to identify the most effective model. Additionally, this project seeks to evaluate the sensitivity of model predictions to different input features, providing actionable insights into the most influential factors affecting house prices.
 
-The data preparation involved cleaning, feature selection, and scaling to ensure that our dataset was consistent and ready for modeling. Following this, we split the data into training, validation, and test sets to facilitate model development and unbiased perfor- mance evaluation. Ridge and Lasso regression were applied with varying regularization parameters to identify the best model for minimizing the mean squared error (MSE). This report details the methods, findings, and conclusions derived from these modeling efforts.
+### Potential Stakeholders
+- Real estate agents and appraisers seeking accurate pricing models.
+- Homebuyers and sellers aiming to understand fair market values.
+- Financial institutions evaluating mortgage and loan risks.
+- Researchers and data scientists exploring regression techniques in real-world applications.
 
-## Files
-- `DSC 412_ Project_main.ipynb`: The main notebook containing all code for data collection, processing, and analysis.
-- `IA_House_Price_Original_Data.xlsx`: File contains the actual data of Iowa House Prices.
+### Potential Obstacles
+- **Data Quality**: Handling missing values and ensuring consistency in the dataset.
+- **Feature Engineering**: Selecting and transforming features effectively to enhance model performance.
+- **Hyperparameter Tuning**: Finding the optimal regularization strength for Ridge and Lasso models.
+- **Model Evaluation**: Ensuring that the selected model generalizes well to unseen data.
 
-## Dataset
-The dataset consists of multiple columns, each representing different attributes related to house prices, with 2,908 data points in total.
-  
-## Data Processing
-- **Cleaning Data**: To assess the uniqueness of the data, the number of unique values was calculated for each column, and each column was checked for missing (NaN) values and duplicates.To handle missing values, numerical columns were filled with the median of each respec- tive column, while categorical columns were filled with the most frequent value (mode).
-- **Feature Selection**: Features were selected from the dataset to build the model. Two categorical and twenty-one numerical features were chosen for this process. The categorical features included BsmtQual (which evaluates the height of the basement) and Neighborhood (which refers to physical loca- tions within the Ames city limits).
-- **Splitting Data and Scaling**: The dataset was split into three subsets: training, validation, and test sets. This allowed for proper evaluation of model performance dur- ing training and final testing.After splitting the data, feature scaling was applied to the features and the target variable SalePrice.
+### Novelty
+This project goes beyond standard regression analysis by combining regularization techniques with a rigorous feature engineering process. The use of both Ridge and Lasso regression allows for a detailed comparison of their effects on predictive accuracy and variable selection. Additionally, the project incorporates sensitivity analysis to quantify the impact of various property attributes on model predictions.
 
-## Model Building
-The project implemented multiple models:
-1. **Linear Regression**: This model was fit to the scaled training data using the Lin- earRegression() function from the scikit-learn library. 
-2. **Ridge Regression**: This regression technique introduces a regularization term to linear regression. and works to minimize the function
-3. **Lasso Regression**: Un-like Ridge regression where we squared our coefficients, Lasso regression uses the absolute value. This term not only shrinks the coefficients but can also force some to be exactly zero, effectively performing variable selection.
+### Model Accuracy
+The accuracy of the models will be evaluated using mean squared error (MSE) on validation and test datasets. Cross-validation techniques will ensure unbiased performance evaluation. Comparative analysis with baseline models (e.g., simple linear regression) will demonstrate the improvement achieved through regularization.
 
+### Benchmarking
+Similar models and studies exist in online repositories and research papers. These will be used as baselines to compare the performance and features of this project’s models. Improvements will be documented, including enhanced feature selection, optimized hyperparameters, and lower error metrics.
 
-## Results and Evaluation
-To choose our model we analyzed the calculated MSEs. The Ridge model with λ=0.10 was chosen as the best model based on its performance on the validation set. To further evaluate the Ridge model, it was implemented on the test dataset. The resulting MSE was 0.1482, indicating that our model generalizes well.
+## Plan
 
-# Getting Started Instruction
+### Data Acquisition
+- **Source**: Historical house price data from publicly available sources, including Kaggle’s Ames Housing dataset.
+- **Access Permissions**: Ensure the data is publicly available or properly licensed for use.
 
-You can run your tests in terminal by doing the following:
+### Data Preprocessing
+- **Cleaning Data**: Handle missing values using median imputation for numerical columns and mode for categorical columns.
+- **Feature Engineering**: Select relevant features, including two categorical features (e.g., BsmtQual and Neighborhood) and 21 numerical features.
+- **Scaling**: Standardize numerical features and target variable (SalePrice) to ensure comparability.
 
-Make sure your terminal is in this directory. You can confirm that is true by typing `pwd` in terminal.
+### Data Organization
+- Organize data into training, validation, and test subsets to ensure unbiased evaluation.
+- Store cleaned and preprocessed data in a GitHub repository for reproducibility.
 
-Create a virtual environment with
+### Data Analysis
+- Explore feature distributions and correlations.
+- Identify multicollinearity among features using variance inflation factors (VIF).
 
-`python -m venv ./.venv`
+### Model Selection
+1. **Linear Regression**: Fit a baseline model using scikit-learn’s `LinearRegression()`.
+2. **Ridge Regression**: Implement with varying regularization strengths (λ) to minimize MSE.
+3. **Lasso Regression**: Use L1 regularization to perform variable selection and identify key predictors.
 
-Then activate it in terminal:
+### Accuracy Metrics
+- Evaluate models using MSE on validation and test datasets.
+- Use cross-validation to ensure robustness.
+- Benchmark results against simple linear regression as a baseline.
 
-Windows: `.\.venv\Scripts\activate`
+### Sensitivity Analysis
+- Assess the impact of changes in key features (e.g., property size, location) on predicted prices.
+- Quantify the relative importance of selected features using coefficients from Lasso regression.
 
-Mac: `source ./.venv/bin/activate`
+### Public Documentation
+- Maintain a comprehensive project repository on GitHub.
+- Include detailed README files, Jupyter notebooks, and results for public access.
 
-Linux: `source ./.venv/bin/activate`
+---
 
-You should see `.venv` appear in the terminal on the left side of teh command line.
+This proposal and plan aim to deliver a thorough exploration of house price prediction techniques, ensuring academic rigor and practical relevance.
 
-Then run `pip install -r requirements.txt` in terminal
